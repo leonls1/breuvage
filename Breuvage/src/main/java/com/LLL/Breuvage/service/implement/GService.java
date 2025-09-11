@@ -60,12 +60,30 @@ public abstract class GService<E extends BasicEntity,ID, Rq, Rs > {
     }
     
     public void update(@NonNull Rq dto, @NonNull ID id){
-        E entity = findById(id);
+        E entity = findEntityById(id);
+        mapper.updateExistingEntity(dto, entity);
+        repository.save(entity);
     }
     
+    public void deletedById(@NonNull ID id){
+        if(existsById(id)){
+            repository.deleteById(id);
+        }else{
+            throw notFoundException;
+        }
+    }
     
+    public void sofDeleteById(ID id){
+        E entity = findEntityById(id);
+        entity.setDeleted(true);
+        repository.save(entity);
+    }
+        
+    public boolean existsById(ID id){
+        return repository.existsById(id);
+    }
     
-    
+        
     protected List<Rs> toResponseList(List<E> list){
         return list.stream()
                 .map(mapper::toDto)
