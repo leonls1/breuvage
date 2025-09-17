@@ -75,9 +75,11 @@ public abstract class GService<E extends BasicEntity,ID, Rq, Rs > {
     
     public void sofDeleteById(ID id){
         E entity = findEntityById(id);
-        entity.setDeleted(true);
+        entity.setDeleted(false);
         repository.save(entity);
     }
+
+
         
     public boolean existsById(ID id){
         return repository.existsById(id);
