@@ -9,15 +9,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- *
- * @author leon
- */
 @Getter
 @Setter
 @Entity
@@ -36,8 +33,5 @@ public class Product extends BasicEntity{
     
     @OneToMany(mappedBy = "product")
     private List<StockMovent>  movements;
-    
-    
-    
-            
+
 }

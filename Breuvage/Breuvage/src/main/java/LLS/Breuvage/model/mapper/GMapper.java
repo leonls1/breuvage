@@ -8,10 +8,6 @@ package LLS.Breuvage.model.mapper;
 import LLS.Breuvage.model.entity.BasicEntity;
 import org.mapstruct.MappingTarget;
 
-/**
- *
- * @author leon
- */
 public interface GMapper<E extends BasicEntity, Rq, Rs> {
     E toEntity(Rq request);
     
