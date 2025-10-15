@@ -7,7 +7,6 @@ import LLS.Breuvage.model.entity.Product;
 import LLS.Breuvage.model.mapper.ProductMapper;
 import LLS.Breuvage.repository.ProductRepository;
 import LLS.Breuvage.service.ProductService;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
