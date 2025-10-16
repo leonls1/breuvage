@@ -1,5 +1,6 @@
 package LLS.Breuvage.exception;
 
+import org.hibernate.event.spi.ResolveNaturalIdEvent;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,6 +21,21 @@ public class GlobalControllerAdvice {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<?> userNotFoundException(UserNotFoundException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PurchaseOrderNotFoundException.class)
+    public ResponseEntity<?> purchaseOrderNotFoundException(PurchaseOrderNotFoundException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(StockMovementNotFoundException.class)
+    public ResponseEntity<?> stockMovementNotFoundException(StockMovementNotFoundException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(StockNotFoundException.class)
+    public ResponseEntity<?> stockNotFoundException(StockNotFoundException ex){
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
