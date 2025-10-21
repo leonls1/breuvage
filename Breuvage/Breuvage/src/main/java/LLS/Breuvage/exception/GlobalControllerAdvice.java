@@ -39,4 +39,9 @@ public class GlobalControllerAdvice {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(PaymentNotFoundException.class)
+    public ResponseEntity<?> paymentNotFoundException(PaymentNotFoundException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
 }
