@@ -1,4 +1,4 @@
 package LLS.Breuvage.model.dto.response;
 
-public class PaymentResponseDto {
+public record PaymentResponseDto() {
 }

@@ -1,4 +1,4 @@
 package LLS.Breuvage.model.dto.request;
 
-public class StockMovementRequestDto {
+public record StockMovementRequestDto() {
 }
