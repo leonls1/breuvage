@@ -10,5 +10,6 @@ package LLS.Breuvage.model.enums;
  */
 public enum UserRole {
     ADMIN,
-    SALES_PERSON
+    SALES_PERSON,
+
 }

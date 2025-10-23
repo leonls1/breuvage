@@ -1,4 +1,4 @@
-package LLS.Breuvage.security.request;
+package LLS.Breuvage.security.jwt;
 
 
 import io.jsonwebtoken.Jwts;

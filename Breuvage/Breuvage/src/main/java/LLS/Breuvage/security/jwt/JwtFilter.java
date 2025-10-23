@@ -1,4 +1,4 @@
-package LLS.Breuvage.security.request;
+package LLS.Breuvage.security.jwt;
 
 import LLS.Breuvage.security.user.service.UserDetailsServiceImp;
 import jakarta.servlet.FilterChain;
@@ -6,7 +6,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -28,8 +31,14 @@ public class JwtFilter extends OncePerRequestFilter {
             String token = getTokenFromRequest(request);
             if(token != null && utils.validateToken(token)){
                 UserDetails user = userDetailsServiceImp.loadUserByUsername(utils.extractUserFromToken(token));
-
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getAuthorities());
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authToken);
             }
+        }
+        catch (Exception e){
+            System.out.println("The user cannot be checked");
+            throw e;
         }
     }
 
