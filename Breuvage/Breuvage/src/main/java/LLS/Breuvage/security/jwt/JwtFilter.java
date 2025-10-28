@@ -40,6 +40,7 @@ public class JwtFilter extends OncePerRequestFilter {
             System.out.println("The user cannot be checked");
             throw e;
         }
+        filterChain.doFilter(request, response);
     }
 
     private String getTokenFromRequest(HttpServletRequest request){
