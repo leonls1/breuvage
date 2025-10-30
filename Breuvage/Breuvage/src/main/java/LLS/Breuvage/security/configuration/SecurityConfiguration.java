@@ -58,6 +58,8 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                         .requestMatchers("/api/v1/auth/**", "/api/v1/user/**").permitAll()
+                        .requestMatchers("/swagger-ui/**","/swagger-ui.html","/v3/api-docs/**","/v3/api-docs.yaml")
+                        .permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(getFilter(), UsernamePasswordAuthenticationFilter.class)
