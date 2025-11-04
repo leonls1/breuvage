@@ -8,6 +8,7 @@ package LLS.Breuvage.service.implement;
 import LLS.Breuvage.model.entity.BasicEntity;
 import LLS.Breuvage.model.mapper.GMapper;
 import LLS.Breuvage.repository.GRepository;
+import LLS.Breuvage.service.IGService;
 import lombok.Getter;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Getter
-public abstract class GService<E extends BasicEntity,ID, Rq, Rs > {
+public abstract class GService<E extends BasicEntity,ID, Rq, Rs > implements IGService<E, ID, Rq, Rs> {
     private final GRepository<E, ID> repository;
     private final GMapper<E, Rq, Rs> mapper;
     private final RuntimeException notFoundException;
