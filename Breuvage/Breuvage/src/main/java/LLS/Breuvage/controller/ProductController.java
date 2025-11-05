@@ -7,17 +7,10 @@ package LLS.Breuvage.controller;
 import LLS.Breuvage.model.dto.request.ProductRequestDto;
 import LLS.Breuvage.model.dto.response.ProductResponseDto;
 import LLS.Breuvage.model.entity.Product;
-import LLS.Breuvage.model.entity.ProductCategory;
 import LLS.Breuvage.service.implement.ProductServiceImp;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 
 @RestController
@@ -28,15 +21,5 @@ public class ProductController extends GController<Product, Long, ProductRequest
         super(service);
     }
 
-    @GetMapping(params = "category")
-    public ResponseEntity<?> findProductsByCategory (ProductCategory category){
-        List<Product> products = ((ProductServiceImp)super.getService()).findByCategory(category);
-        return ResponseEntity.ok("");
-    }
-
-    @GetMapping(params = "name")
-    public ResponseEntity<?> findProductByName(String name){
-        return ResponseEntity.ok("");
-    }
 
 }

@@ -1,4 +1,10 @@
 package LLS.Breuvage.model.dto.request;
 
-public record UserRequestDto() {
+import jakarta.validation.constraints.Email;
+
+public record UserRequestDto(String username,
+                             String password,
+                             String name,
+                             @Email
+                             String email) {
 }

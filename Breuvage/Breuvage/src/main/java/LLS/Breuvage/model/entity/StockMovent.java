@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 public class StockMovent extends BasicEntity{    
-    private Long quantity;
+    private int quantity;
     private LocalDateTime dateTime;
     private String reason;
     

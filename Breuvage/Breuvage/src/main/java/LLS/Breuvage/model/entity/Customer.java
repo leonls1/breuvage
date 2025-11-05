@@ -6,6 +6,7 @@ package LLS.Breuvage.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class Customer extends BasicEntity {
 
     private String name;
     private String phoneNumber;
+    @Email
     private String email;
     private boolean overEighteen;
 

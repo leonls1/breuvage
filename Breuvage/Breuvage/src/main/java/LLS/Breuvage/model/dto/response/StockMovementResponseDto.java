@@ -1,4 +1,8 @@
 package LLS.Breuvage.model.dto.response;
 
-public record StockMovementResponseDto() {
+import LLS.Breuvage.model.enums.MoventType;
+
+import java.time.LocalDateTime;
+
+public record StockMovementResponseDto(int quantity, LocalDateTime dateTime, String reason, Long purchaseOrderId, ProductResponseDto product, MoventType moventType) {
 }

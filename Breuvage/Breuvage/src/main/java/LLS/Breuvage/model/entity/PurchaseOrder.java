@@ -31,10 +31,10 @@ public class PurchaseOrder extends BasicEntity{
     private BigDecimal totalAmount;
     
     @Enumerated(value = EnumType.STRING)
-    private OrderState state;
+    private OrderState state = OrderState.EXPECTING;
     
     @OneToMany(mappedBy = "purchaseOrder")
-    private List<OrderDetail> details;
+    private List<PurchaseOrderDetail> details;
     
     @OneToMany(mappedBy = "purchaseOrder")
     private List<Message> messages;

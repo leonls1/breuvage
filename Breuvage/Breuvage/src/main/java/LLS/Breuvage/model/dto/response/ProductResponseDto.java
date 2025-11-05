@@ -1,4 +1,6 @@
 package LLS.Breuvage.model.dto.response;
 
-public record ProductResponseDto() {
+import java.math.BigDecimal;
+
+public record ProductResponseDto(String name, String description, BigDecimal price, String SKU, Long categoryId, Long stockId) {
 }

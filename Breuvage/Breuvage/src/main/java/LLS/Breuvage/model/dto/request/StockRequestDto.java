@@ -1,4 +1,8 @@
 package LLS.Breuvage.model.dto.request;
 
-public record StockRequestDto() {
+import LLS.Breuvage.model.enums.MoventType;
+
+public record StockRequestDto(Long actualStock,
+                              Long minStock,
+                              Long productId) {
 }

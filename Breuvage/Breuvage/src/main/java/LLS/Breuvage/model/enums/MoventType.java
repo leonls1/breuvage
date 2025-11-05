@@ -10,7 +10,8 @@ package LLS.Breuvage.model.enums;
  */
 public enum MoventType {
     INCOME,
-    EXPEDITURE,
-    ADJUSTMENT; 
+    EXPENDITURE,
+    ADJUSTMENT,
+    RESERVE
     
 }

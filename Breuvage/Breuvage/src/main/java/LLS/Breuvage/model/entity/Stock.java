@@ -4,10 +4,12 @@
  */
 package LLS.Breuvage.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import LLS.Breuvage.model.enums.MoventType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 /**
  *
@@ -19,8 +21,7 @@ import lombok.Setter;
 public class Stock extends BasicEntity{
     private Long actualStock;
     private Long minStock;
-    
     @OneToOne
     private Product product;
-    
+
 }

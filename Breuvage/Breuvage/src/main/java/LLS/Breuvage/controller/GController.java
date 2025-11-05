@@ -91,7 +91,7 @@ public abstract class GController<E extends BasicEntity, ID, Rq, Rs> {
                     description = "no content available"
             )}
     )
-    @GetMapping
+    @GetMapping("/deleted-included")
     public ResponseEntity<?> findAll(){
         List<Rs> responses = service.findAllResponse();
         return validateNotEmptyList(responses);
@@ -108,7 +108,7 @@ public abstract class GController<E extends BasicEntity, ID, Rq, Rs> {
                     description = "no content available"
             )}
     )
-    @GetMapping("/not-deleted")
+    @GetMapping
     public ResponseEntity<?> findAllNotDeleted(){
         List<Rs> responses = service.findAllResponseNotDeleted();
         return validateNotEmptyList(responses);
@@ -126,7 +126,7 @@ public abstract class GController<E extends BasicEntity, ID, Rq, Rs> {
                     description = "a custom message for the entity indicating that cannot be found"
             )},
             parameters = @Parameter(name = "id", description = "entity id", required = true))
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/physical-delete/{id}")
     public ResponseEntity<?> deleteEntityById(@PathVariable @NonNull ID id){
         service.deletedById(id);
         return new ResponseEntity<>("entity deleted", HttpStatus.OK);
@@ -144,7 +144,7 @@ public abstract class GController<E extends BasicEntity, ID, Rq, Rs> {
                     description = "a custom message for the entity indicating that cannot be found"
             )},
             parameters = @Parameter(name = "id", description = "entity id", required = true))
-    @DeleteMapping("/soft-delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> softDeleteById(@NonNull @PathVariable ID id){
         service.sofDeleteById(id);
         return new ResponseEntity<>("entity marked as deleted", HttpStatus.OK);

@@ -7,6 +7,7 @@ package LLS.Breuvage.model.entity;
 
 import LLS.Breuvage.model.enums.UserRole;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,7 +37,7 @@ public class User extends BasicEntity implements UserDetails {
     private boolean isActive = true;
     
     private String name;
-    
+    @Email
     private String email;
     
     @Enumerated(value = EnumType.STRING)

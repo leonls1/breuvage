@@ -1,4 +1,4 @@
 package LLS.Breuvage.model.dto.request;
 
-public record ProductCategoryRequestDto() {
+public record ProductCategoryRequestDto(String name, String description) {
 }

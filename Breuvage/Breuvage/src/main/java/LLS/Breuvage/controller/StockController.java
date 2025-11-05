@@ -1,18 +1,29 @@
 package LLS.Breuvage.controller;
 
 import LLS.Breuvage.model.dto.request.StockRequestDto;
-import LLS.Breuvage.model.dto.response.StockResponseDto;
-import LLS.Breuvage.model.entity.Stock;
-import LLS.Breuvage.service.implement.StockServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import LLS.Breuvage.model.dto.request.StockUpdateRequestDto;
+import LLS.Breuvage.service.IStockService;
+import LLS.Breuvage.service.implement.StockMovementServiceImp;
+import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/stock")
-public class StockController extends GController<Stock, Long, StockRequestDto, StockResponseDto> {
-    @Autowired
-    public StockController(StockServiceImp service){
-        super(service);
+@RequiredArgsConstructor
+public class StockController {
+
+    private final IStockService stockService;
+    private final StockMovementServiceImp movementService;
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateStock(@PathVariable Long id,@RequestBody StockUpdateRequestDto request){
+        stockService.update(request.stockRequest(), id);
+        movementService.create(request.movementRequest());
+        return new ResponseEntity<>("Stock updated", HttpStatus.OK);
     }
+
+
 }
