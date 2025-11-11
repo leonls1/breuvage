@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Bill extends BasicEntity{
+public class ZBill extends BasicEntity{
     private Date date;
     
     private BigDecimal totalAmountForCurrentDay;   

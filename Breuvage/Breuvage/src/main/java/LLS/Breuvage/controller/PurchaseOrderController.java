@@ -27,7 +27,7 @@ public class PurchaseOrderController{
         service.changePurchaseState(state);
         return ResponseEntity.ok("state changed");
     }
-    // POST/GET/purchase, GET /purchase/:id,
+
     @PostMapping
     public ResponseEntity<?> createPurchaseOrder(@RequestBody PurchaseOrderRequestDto request){
         service.create(request);
@@ -42,7 +42,10 @@ public class PurchaseOrderController{
         }else
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    }
 
+    @GetMapping("{id}")
+    public ResponseEntity<?> getAllPurchases(@PathVariable Long id){
+        return new ResponseEntity<>(service.findResponseDtoById(id) ,HttpStatus.NO_CONTENT);
+    }
 
 }

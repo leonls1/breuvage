@@ -36,5 +36,5 @@ public class Payment extends BasicEntity{
     private List<ExternalIntegration> integrations;
 
     @OneToOne
-    private Bill bill;
+    private ZBill bill;
 }

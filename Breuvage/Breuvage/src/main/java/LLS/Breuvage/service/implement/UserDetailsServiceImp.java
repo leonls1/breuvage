@@ -1,4 +1,4 @@
-package LLS.Breuvage.security.user.service;
+package LLS.Breuvage.service.implement;
 
 import LLS.Breuvage.exception.UserNotFoundException;
 import LLS.Breuvage.repository.UserRepository;

@@ -1,6 +1,6 @@
 package LLS.Breuvage.security.jwt;
 
-import LLS.Breuvage.security.user.service.UserDetailsServiceImp;
+import LLS.Breuvage.service.implement.UserDetailsServiceImp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
