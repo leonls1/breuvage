@@ -10,6 +10,7 @@ import lombok.NonNull;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -91,6 +92,8 @@ public abstract class GController<E extends BasicEntity, ID, Rq, Rs> {
                     description = "no content available"
             )}
     )
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/deleted-included")
     public ResponseEntity<?> findAll(){
         List<Rs> responses = service.findAllResponse();
@@ -126,6 +129,7 @@ public abstract class GController<E extends BasicEntity, ID, Rq, Rs> {
                     description = "a custom message for the entity indicating that cannot be found"
             )},
             parameters = @Parameter(name = "id", description = "entity id", required = true))
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/physical-delete/{id}")
     public ResponseEntity<?> deleteEntityById(@PathVariable @NonNull ID id){
         service.deletedById(id);

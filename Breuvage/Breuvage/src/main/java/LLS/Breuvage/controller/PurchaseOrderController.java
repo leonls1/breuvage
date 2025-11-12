@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/purchase")
 @RequiredArgsConstructor
+@PreAuthorize("hasAnyRole('ADMIN', 'SALES_PERSON')")
 public class PurchaseOrderController{
 
     private final IPurchaseOrderService service;
@@ -44,7 +46,7 @@ public class PurchaseOrderController{
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<?> getAllPurchases(@PathVariable Long id){
+    public ResponseEntity<?> getPurchaseById(@PathVariable Long id){
         return new ResponseEntity<>(service.findResponseDtoById(id) ,HttpStatus.NO_CONTENT);
     }
 

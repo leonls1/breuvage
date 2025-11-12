@@ -41,6 +41,4 @@ public class AuthController {
         return new ResponseEntity<>("user session closed", HttpStatus.ACCEPTED);
     }
 
-
-
 }

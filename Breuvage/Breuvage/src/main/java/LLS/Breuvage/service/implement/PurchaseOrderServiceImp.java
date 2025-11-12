@@ -18,4 +18,8 @@ public class PurchaseOrderServiceImp extends GService<PurchaseOrder, Long, Purch
         super(repository, mapper, new PurchaseOrderNotFoundException("There isn't a purchase with that id"));
     }
 
+    @Override
+    public void changePurchaseState(OrderState state) {
+
+    }
 }

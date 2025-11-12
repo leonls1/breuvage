@@ -19,4 +19,8 @@ public class UserServiceImp extends GService<User, Long, UserRequestDto, UserRes
         super(repository, mapper, new UserNotFoundException("There isn't an user with that id"));
     }
 
+    @Override
+    public void logoutUser(Long userId) {
+
+    }
 }

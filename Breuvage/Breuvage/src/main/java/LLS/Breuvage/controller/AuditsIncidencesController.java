@@ -1,11 +1,14 @@
 package LLS.Breuvage.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+@PreAuthorize("hasRole('ADMIN')")
 @RestController
 @RequestMapping("/api/v1/audits&incidences")
 public class AuditsIncidencesController {
+
 
     @GetMapping("/audits")
     public ResponseEntity<?> auditEntity(@RequestBody String entityId){
