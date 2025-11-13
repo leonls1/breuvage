@@ -1,6 +1,5 @@
 package LLS.Breuvage.exception;
 
-import org.hibernate.event.spi.ResolveNaturalIdEvent;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -42,6 +41,11 @@ public class GlobalControllerAdvice {
     @ExceptionHandler(PaymentNotFoundException.class)
     public ResponseEntity<?> paymentNotFoundException(PaymentNotFoundException ex){
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidOrderStateChangeException.class)
+    public ResponseEntity<?> invalidOrderStateChangeException(InvalidOrderStateChangeException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }

@@ -4,14 +4,19 @@
  */
 package LLS.Breuvage.model.enums;
 
-/**
- *
- * @author leon
- */
 public enum OrderState {
-    PAYED,
+    CANCELLED_BY_USER,
+    CANCELLED_DUE_TIME_EXCEEDED,
+    CLOSED,
     DELIVERED,
-    CANCELLED,
-    EXPECTING;
+    NOT_RETIRED,
+    OUT_OF_STOCK,
+    PAYED,
+    PENDING,
+    PREPARED,
+    READY_TO_DELIVER,
+    REJECTED_PAYMENT,
+    WAITING_PAYMENT
+
     
 }

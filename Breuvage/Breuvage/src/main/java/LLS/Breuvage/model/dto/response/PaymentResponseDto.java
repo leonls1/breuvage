@@ -5,5 +5,9 @@ import LLS.Breuvage.model.enums.PaymentState;
 
 import java.math.BigDecimal;
 
-public record PaymentResponseDto(BigDecimal totalAmount, String transactionReference, PaymentMethod method, PaymentState state) {
+public record PaymentResponseDto(
+        BigDecimal totalAmount,
+        String transactionReference,
+        PaymentMethod method,
+        PaymentState state) {
 }

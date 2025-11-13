@@ -11,10 +11,6 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-/**
- *
- * @author leon
- */
 @Getter
 @Setter
 @Entity
