@@ -8,7 +8,6 @@ package LLS.Breuvage.model.entity;
 import LLS.Breuvage.model.entity.statePattern.*;
 import LLS.Breuvage.model.enums.OrderState;
 import LLS.Breuvage.model.enums.SalesChannel;
-import LLS.Breuvage.service.IPurchaseOrderService;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -58,19 +57,19 @@ public class PurchaseOrder extends BasicEntity{
         orderState.closeOrder(this);
     }
     public void deliverOrder(){
-        orderState.deliverOrder(this);
+        orderState.deliveredOrder(this);
     }
     public void orderOutOfStock(){
         orderState.orderOutOfStock(this);
     }
     public void orderPayed(){
-        orderState.orderPayed(this);
+        orderState.payOrder(this);
     }
     public void orderPending(){
         orderState.orderPending(this);
     }
     public void orderPrepared(){
-        orderState.orderPrepared(this);
+        orderState.prepareOrder(this);
     }
     public void orderReadyToDeliver(){
         orderState.orderReadyToDeliver(this);
@@ -98,7 +97,7 @@ public class PurchaseOrder extends BasicEntity{
                 this.setOrderState(new Delivered());
             }
             case NOT_RETIRED -> {
-                this.setOrderState(new NotRetired());
+                this.setOrderState(new NotCollected());
             }
             case OUT_OF_STOCK -> {
                 this.setOrderState(new OutOfStock());

@@ -1,60 +1,66 @@
 package LLS.Breuvage.model.entity.statePattern;
 
+import LLS.Breuvage.exception.InvalidOrderStateChangeException;
 import LLS.Breuvage.model.entity.PurchaseOrder;
 
 public class CancelledByUser implements IPurchaseOrderState {
     @Override
     public void cancelOrderByUSer(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order is already cancelled");
     }
 
     @Override
     public void cancelOrderDueTimeExceed(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("The order is already cancelled");
+    }
 
+    @Override
+    public void cancelOrderNotCollected(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("The order is already cancelled");
     }
 
     @Override
     public void closeOrder(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
-    public void deliverOrder(PurchaseOrder order) {
-
+    public void deliveredOrder(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
     public void orderOutOfStock(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
-    public void orderPayed(PurchaseOrder order) {
-
+    public void payOrder(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
     public void orderPending(PurchaseOrder order) {
-
-    }
-
-    @Override
-    public void orderPrepared(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
     public void orderReadyToDeliver(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+    }
 
+    @Override
+    public void prepareOrder(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
     public void orderRejectedPayment(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 
     @Override
     public void orderWaitingPayment(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
     }
 }

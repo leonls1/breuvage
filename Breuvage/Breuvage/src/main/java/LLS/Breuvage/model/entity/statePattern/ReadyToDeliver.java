@@ -1,11 +1,12 @@
 package LLS.Breuvage.model.entity.statePattern;
 
+import LLS.Breuvage.exception.InvalidOrderStateChangeException;
 import LLS.Breuvage.model.entity.PurchaseOrder;
 
 public class ReadyToDeliver implements IPurchaseOrderState {
     @Override
     public void cancelOrderByUSer(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
     }
 
     @Override
@@ -14,47 +15,53 @@ public class ReadyToDeliver implements IPurchaseOrderState {
     }
 
     @Override
-    public void closeOrder(PurchaseOrder order) {
-
+    public void cancelOrderNotCollected(PurchaseOrder order) {
+        /// ///
     }
 
     @Override
-    public void deliverOrder(PurchaseOrder order) {
+    public void closeOrder(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
+    }
+
+    @Override
+    public void deliveredOrder(PurchaseOrder order) {
+        /// /////////////
 
     }
 
     @Override
     public void orderOutOfStock(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
     }
 
     @Override
-    public void orderPayed(PurchaseOrder order) {
-
+    public void payOrder(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
     }
 
     @Override
     public void orderPending(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
     }
 
     @Override
-    public void orderPrepared(PurchaseOrder order) {
-
+    public void prepareOrder(PurchaseOrder order) {
+        throw new InvalidOrderStateChangeException("The order is already prepared and waiting for being deliver, request denied");
     }
 
     @Override
     public void orderReadyToDeliver(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order already in this state, request denied");
     }
 
     @Override
     public void orderRejectedPayment(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
     }
 
     @Override
     public void orderWaitingPayment(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("The order ready to deliver, request denied");
     }
 }
