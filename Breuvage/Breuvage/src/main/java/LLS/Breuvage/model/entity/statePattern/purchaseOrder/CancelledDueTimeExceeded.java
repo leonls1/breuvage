@@ -1,9 +1,9 @@
-package LLS.Breuvage.model.entity.statePattern;
+package LLS.Breuvage.model.entity.statePattern.purchaseOrder;
 
 import LLS.Breuvage.exception.InvalidOrderStateChangeException;
 import LLS.Breuvage.model.entity.PurchaseOrder;
 
-public class CancelledByUser implements IPurchaseOrderState {
+public class CancelledDueTimeExceeded implements IPurchaseOrderState {
     @Override
     public void cancelOrderByUSer(PurchaseOrder order) {
         throw new InvalidOrderStateChangeException("The order is already cancelled");
@@ -21,46 +21,49 @@ public class CancelledByUser implements IPurchaseOrderState {
 
     @Override
     public void closeOrder(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
 
     @Override
     public void deliveredOrder(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
+
     }
 
     @Override
     public void orderOutOfStock(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
+
     }
 
     @Override
     public void payOrder(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
 
     @Override
     public void orderPending(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
 
     @Override
     public void orderReadyToDeliver(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
 
     @Override
     public void prepareOrder(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
+
 
     @Override
     public void orderRejectedPayment(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+
     }
 
     @Override
     public void orderWaitingPayment(PurchaseOrder order) {
-        throw new InvalidOrderStateChangeException("the order was cancelled by the user, request denied");
+
     }
 }

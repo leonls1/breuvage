@@ -26,7 +26,7 @@ public class PurchaseOrderController{
 
     @PatchMapping("/{id}")
     public ResponseEntity<?> changePurchaseState(@PathVariable Long id, @RequestBody OrderState state){
-        service.changePurchaseState(state);
+        service.changePurchaseState(state, id);
         return ResponseEntity.ok("state changed");
     }
 

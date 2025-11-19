@@ -5,7 +5,7 @@
 package LLS.Breuvage.model.entity;
 
 
-import LLS.Breuvage.model.entity.statePattern.*;
+import LLS.Breuvage.model.entity.statePattern.purchaseOrder.*;
 import LLS.Breuvage.model.enums.OrderState;
 import LLS.Breuvage.model.enums.SalesChannel;
 import jakarta.persistence.*;
@@ -23,20 +23,20 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class PurchaseOrder extends BasicEntity{
+public class PurchaseOrder extends BasicEntity {
     private LocalDateTime dateTime;
-    
+
     @Enumerated(value = EnumType.STRING)
     private SalesChannel saleChannel;
-    
+
     private BigDecimal totalAmount;
-    
+
     @Enumerated(value = EnumType.STRING)
     private OrderState state = OrderState.PENDING;
-    
+
     @OneToMany(mappedBy = "purchaseOrder")
     private List<PurchaseOrderDetail> details;
-    
+
     @OneToMany(mappedBy = "purchaseOrder")
     private List<Message> messages;
 
@@ -47,83 +47,53 @@ public class PurchaseOrder extends BasicEntity{
     private IPurchaseOrderState orderState = new Pending();
 
     //--------------------------state pattern applied---------------------------------
-    public void cancelOrderByUSer(){
+    public void cancelOrderByUSer() {
         orderState.cancelOrderByUSer(this);
     }
-    public void cancelOrderDueTimeExceed(){
+
+    public void cancelOrderDueTimeExceed() {
         orderState.cancelOrderDueTimeExceed(this);
     }
-    public void closeOrder(){
+
+    public void closeOrder() {
         orderState.closeOrder(this);
     }
-    public void deliverOrder(){
+
+    public void deliverOrder() {
         orderState.deliveredOrder(this);
     }
-    public void orderOutOfStock(){
+
+    public void orderOutOfStock() {
         orderState.orderOutOfStock(this);
     }
-    public void orderPayed(){
+
+    public void orderPayed() {
         orderState.payOrder(this);
     }
-    public void orderPending(){
+
+    public void orderPending() {
         orderState.orderPending(this);
     }
-    public void orderPrepared(){
+
+    public void orderPrepared() {
         orderState.prepareOrder(this);
     }
-    public void orderReadyToDeliver(){
+
+    public void orderReadyToDeliver() {
         orderState.orderReadyToDeliver(this);
     }
-    public void orderRejectedPayment(){
+
+    public void orderRejectedPayment() {
         orderState.orderRejectedPayment(this);
     }
-    public void orderWaitingPayment(){
+
+    public void orderWaitingPayment() {
         orderState.orderWaitingPayment(this);
     }
 
-    //--------------------------starting orderState with state from db---------------
-    public void loadState(){
-        switch (this.getState()){
-            case CANCELLED_BY_USER -> {
-                this.setOrderState(new CancelledByUser());
-            }
-            case CANCELLED_DUE_TIME_EXCEEDED -> {
-                this.setOrderState(new CancelledDueTimeExceeded());
-            }
-            case  CLOSED -> {
-                this.setOrderState(new Closed());
-            }
-            case DELIVERED -> {
-                this.setOrderState(new Delivered());
-            }
-            case NOT_RETIRED -> {
-                this.setOrderState(new NotCollected());
-            }
-            case OUT_OF_STOCK -> {
-                this.setOrderState(new OutOfStock());
-            }
-            case PAYED -> {
-                this.setOrderState(new Payed());
-            }
-            case PENDING -> {
-                this.setOrderState(new Pending());
-            }
-            case PREPARED ->{
-                this.setOrderState(new Prepared());
-            }
-            case READY_TO_DELIVER -> {
-                this.setOrderState(new ReadyToDeliver());
-            }
-            case REJECTED_PAYMENT -> {
-                this.setOrderState(new RejectedPayment());
-            }
-            case WAITING_PAYMENT -> {
-                this.setOrderState(new WaitingPayment());
-            }
-
-        }
+    public void cancelOrderNotCollected() {
+        orderState.cancelOrderNotCollected(this);
     }
-
 
 
 }

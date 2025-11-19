@@ -1,4 +1,4 @@
-package LLS.Breuvage.model.entity.statePattern;
+package LLS.Breuvage.model.entity.statePattern.purchaseOrder;
 
 import LLS.Breuvage.model.entity.PurchaseOrder;
 

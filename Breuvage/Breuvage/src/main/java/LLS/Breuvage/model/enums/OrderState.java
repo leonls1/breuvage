@@ -9,7 +9,7 @@ public enum OrderState {
     CANCELLED_DUE_TIME_EXCEEDED,
     CLOSED,
     DELIVERED,
-    NOT_RETIRED,
+    ORDER_NOT_COLLECTED,
     OUT_OF_STOCK,
     PAYED,
     PENDING,
