@@ -8,7 +8,7 @@ public record StockMovementRequestDto(
         int quantity,
         LocalDateTime dateTime,
         String reason,
-        Long purchaseOrder,
-        Long product,
+        Long purchaseOrderId,
+        Long productId,
         MoventType moventType) {
 }

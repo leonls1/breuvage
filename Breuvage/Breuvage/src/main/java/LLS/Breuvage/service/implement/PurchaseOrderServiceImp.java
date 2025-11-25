@@ -22,9 +22,9 @@ public class PurchaseOrderServiceImp extends GService<PurchaseOrder, Long, Purch
     public PurchaseOrderServiceImp(PurchaseOrderRepository repository, PurchaseOrderMapper mapper) {
         super(repository, mapper, new PurchaseOrderNotFoundException("There isn't a purchase with that id"));
         stateMap.put(OrderState.CLOSED, new Closed());
-        stateMap.put(OrderState.DELIVERED, new Delivered());
-        stateMap.put(OrderState.ORDER_NOT_COLLECTED, new NotCollected());
-        stateMap.put(OrderState.OUT_OF_STOCK, new OutOfStock());
+        stateMap.put(OrderState.DELIVERED, new Delivered(this));
+        stateMap.put(OrderState.ORDER_NOT_COLLECTED, new NotCollected(this));
+        stateMap.put(OrderState.OUT_OF_STOCK, new OutOfStock(this));
         stateMap.put(OrderState.PAYED, new Payed());
         stateMap.put(OrderState.PENDING, new Pending());
         stateMap.put(OrderState.PREPARED, new Prepared());

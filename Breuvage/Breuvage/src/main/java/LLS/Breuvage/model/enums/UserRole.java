@@ -4,10 +4,6 @@
  */
 package LLS.Breuvage.model.enums;
 
-/**
- *
- * @author leon
- */
 public enum UserRole {
     ADMIN,
     SALES_PERSON,

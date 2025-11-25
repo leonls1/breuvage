@@ -6,5 +6,5 @@ import java.util.List;
 public record ProductCategoryResponseDto(
         String name,
         String description,
-        List<Long> products) {
+        List<Long> productsId) {
 }

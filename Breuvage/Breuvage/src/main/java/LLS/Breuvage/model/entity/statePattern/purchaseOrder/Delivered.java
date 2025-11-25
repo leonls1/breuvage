@@ -2,8 +2,15 @@ package LLS.Breuvage.model.entity.statePattern.purchaseOrder;
 
 import LLS.Breuvage.exception.InvalidOrderStateChangeException;
 import LLS.Breuvage.model.entity.PurchaseOrder;
+import LLS.Breuvage.model.enums.OrderState;
+import LLS.Breuvage.service.IPurchaseOrderService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@RequiredArgsConstructor
 public class Delivered implements IPurchaseOrderState {
+    private final IPurchaseOrderService service;
+
     @Override
     public void cancelOrderByUSer(PurchaseOrder order) {
         throw new InvalidOrderStateChangeException("The order was delivered, request denied");
@@ -21,7 +28,7 @@ public class Delivered implements IPurchaseOrderState {
 
     @Override
     public void closeOrder(PurchaseOrder order) {
-        /// /////
+        //service.changePurchaseState(OrderState.CLOSED, order.getId());
     }
 
     @Override

@@ -10,5 +10,5 @@ public record ProductResponseDto(
         String SKU,
         Long categoryId,
         Long stockId,
-        List<Long> movements) {
+        List<Long> movementsId) {
 }

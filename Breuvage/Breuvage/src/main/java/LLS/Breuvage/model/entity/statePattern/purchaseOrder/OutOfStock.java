@@ -2,8 +2,14 @@ package LLS.Breuvage.model.entity.statePattern.purchaseOrder;
 
 import LLS.Breuvage.exception.InvalidOrderStateChangeException;
 import LLS.Breuvage.model.entity.PurchaseOrder;
+import LLS.Breuvage.model.enums.OrderState;
+import LLS.Breuvage.service.IPurchaseOrderService;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class OutOfStock implements IPurchaseOrderState {
+    private final IPurchaseOrderService service;
+
     @Override
     public void cancelOrderByUSer(PurchaseOrder order) {
         throw new InvalidOrderStateChangeException("The order is out of stock, request denied");
@@ -21,7 +27,7 @@ public class OutOfStock implements IPurchaseOrderState {
 
     @Override
     public void closeOrder(PurchaseOrder order) {
-        /// /////////////
+       // service.changePurchaseState(OrderState.CLOSED, order.getId());
 
     }
 

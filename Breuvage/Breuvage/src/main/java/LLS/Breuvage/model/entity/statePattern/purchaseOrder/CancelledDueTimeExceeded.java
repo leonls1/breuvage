@@ -59,11 +59,11 @@ public class CancelledDueTimeExceeded implements IPurchaseOrderState {
 
     @Override
     public void orderRejectedPayment(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
 
     @Override
     public void orderWaitingPayment(PurchaseOrder order) {
-
+        throw new InvalidOrderStateChangeException("the order was cancelled due an exceed of time , request denied");
     }
 }
