@@ -32,8 +32,8 @@ public class PurchaseOrderController{
 
     @PostMapping
     public ResponseEntity<?> createPurchaseOrder(@RequestBody PurchaseOrderRequestDto request){
-        service.create(request);
-        return ResponseEntity.ok("");
+        service.createPurchaseOrder(request);
+        return ResponseEntity.ok("purchase order registered");
     }
 
     @GetMapping

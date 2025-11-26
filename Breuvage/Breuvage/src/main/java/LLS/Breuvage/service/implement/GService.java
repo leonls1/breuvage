@@ -78,7 +78,7 @@ public abstract class GService<E extends BasicEntity,ID, Rq, Rs > implements IGS
     
     public void sofDeleteById(ID id){
         E entity = findEntityById(id);
-        entity.setDeleted(false);
+        entity.setDeleted(true);
         repository.save(entity);
     }
         

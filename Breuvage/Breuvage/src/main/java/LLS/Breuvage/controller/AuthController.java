@@ -28,8 +28,7 @@ public class AuthController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.username(), request.password()));
             String token = utils.generateToken((UserDetails) authentication.getPrincipal());
-            System.out.println(" token" + token);
-            return ResponseEntity.ok(token + request.password() + request.username());
+            return ResponseEntity.ok(token);
         } catch (BadCredentialsException ex) {
             return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
         }

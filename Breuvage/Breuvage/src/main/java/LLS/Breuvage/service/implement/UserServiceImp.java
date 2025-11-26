@@ -27,6 +27,7 @@ public class UserServiceImp extends GService<User, Long, UserRequestDto, UserRes
 
     @Override
     public void create(@NonNull UserRequestDto dto){
+        System.out.println(dto.role().name());
         User user = super.getMapper().toEntity(dto);
         user.setPassword(encoder.encode(dto.password()));
         super.getRepository().save(user);

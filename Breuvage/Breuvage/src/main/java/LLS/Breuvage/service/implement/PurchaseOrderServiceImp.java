@@ -10,6 +10,7 @@ import LLS.Breuvage.model.enums.OrderState;
 import LLS.Breuvage.model.mapper.PurchaseOrderMapper;
 import LLS.Breuvage.repository.PurchaseOrderRepository;
 import LLS.Breuvage.service.IPurchaseOrderService;
+import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -91,6 +92,13 @@ public class PurchaseOrderServiceImp extends GService<PurchaseOrder, Long, Purch
     public void loadState(PurchaseOrder order) {
         order.setOrderState(
                 stateMap.get(order.getState()));
+    }
+
+    @Override
+    public void createPurchaseOrder(@NonNull PurchaseOrderRequestDto dto) {
+        PurchaseOrder order = super.getMapper().toEntity(dto);
+        order.setState(OrderState.PENDING);
+        super.getRepository().save(order);
     }
 
 }
