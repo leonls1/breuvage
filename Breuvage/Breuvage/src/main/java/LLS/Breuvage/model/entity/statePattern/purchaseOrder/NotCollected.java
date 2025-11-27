@@ -5,10 +5,10 @@ import LLS.Breuvage.model.entity.PurchaseOrder;
 import LLS.Breuvage.model.enums.OrderState;
 import LLS.Breuvage.service.IPurchaseOrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
+
 public class NotCollected implements IPurchaseOrderState {
-    private final IPurchaseOrderService service;
     @Override
     public void cancelOrderByUSer(PurchaseOrder order) {
         throw new InvalidOrderStateChangeException("The order wasn't collected, request denied");

@@ -2,6 +2,7 @@ package LLS.Breuvage.model.entity.statePattern.purchaseOrder;
 
 import LLS.Breuvage.exception.InvalidOrderStateChangeException;
 import LLS.Breuvage.model.entity.PurchaseOrder;
+import org.springframework.stereotype.Component;
 
 public class CancelledDueTimeExceeded implements IPurchaseOrderState {
     @Override
